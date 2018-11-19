@@ -40,9 +40,19 @@
     // 获取第二长的单词
     let getSecondElement = (str) => {
         str.sort((a, b) => {
-            return b.length - a.length
+            return a.length - b.length
         })
-        return uniqueArr(str[1])
+
+        if (str.length) {
+            str = uniqueArr(str)
+            let len=str.length
+            if (len>2) {
+                return str[len-2]
+            }
+            else return str[len-1]
+        } else {
+            return 0
+        }
     }
 
     let showResult = () => {
@@ -60,7 +70,7 @@
         })
         let result = document.getElementById('result')
         let content = ''
-        getSecondElement(uniqueArr(equalArr)).length ? content = getSecondElement(uniqueArr(equalArr)) : content = '暂无第⼆⻓公共单词'
+        getSecondElement(equalArr).length ? content = getSecondElement(equalArr) : content = '暂无第⼆⻓公共单词'
         result.innerHTML = content
     }
 
