@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <h3>请输入第一串字符串:</h3>
+    <input type="text" id="stringFirst">
+</div>
+
+
+<div>
+    <h3>请输入第二串字符串：</h3>
+    <input type="text" id="stringSecond">
+</div>
+
+
+
+<h2 id="result"></h2>
+
+<button  onclick="showResult()">显示结果</button>
+<script>
+    window.onload = function () {
+
+    }
+
+    // 数组去重
+    let uniqueArr = (arr) => {
+        let temp = []
+        arr.map(item => {
+            if (temp.indexOf(item) == -1) {
+                temp.push(item);
+            }
+        })
+        return temp
+    }
+
+    // 获取第二长的单词
+    let getSecondElement = (str) => {
+        let temp = []
+        str.sort((a, b) => {
+            return b.length - a.length
+        })
+        for (let i = 1; i < str.length; i++) {
+            if (str[1].length == str[i].length) {
+                temp.length == 2 ? temp.push(str[1]) : temp.push(str[1], str[i])
+            }
+        }
+        return uniqueArr(temp)
+    }
+
+    let showResult = () => {
+        let string1 = document.getElementById('stringFirst').value
+        let string2 = document.getElementById('stringSecond').value
+        let arr1 = string1.split(" ")
+        let arr2 = string2.split(" ")
+        let equalArr = new Array()
+        arr1.map(item => {
+            arr2.map(item2 => {
+                if (item == item2 && item && item2) {
+                    equalArr.push(item)
+                }
+            })
+        })
+        let result = document.getElementById('result')
+        let content = ''
+        getSecondElement(uniqueArr(equalArr)).length ? content =  getSecondElement(uniqueArr(equalArr)) : '暂无第⼆⻓公共单词'
+        result.innerHTML = content
+    }
+
+</script>
+</body>
+</html>
