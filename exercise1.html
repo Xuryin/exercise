@@ -66,7 +66,8 @@
         })
         let result = document.getElementById('result')
         let content = ''
-        getSecondElement(uniqueArr(equalArr)).length ? content =  getSecondElement(uniqueArr(equalArr)) : '暂无第⼆⻓公共单词'
+        getSecondElement(uniqueArr(equalArr)).length ? content = getSecondElement(uniqueArr(equalArr)) : content = '暂无第⼆⻓公共单词'
+        console.log(getSecondElement(uniqueArr(equalArr)).length)
         result.innerHTML = content
     }
 
